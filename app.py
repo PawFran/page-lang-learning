@@ -27,5 +27,14 @@ def finish_session():
     return jsonify({'response': response_text})
 
 
+@app.route('/translation', methods=['POST'])
+def check_translation():
+    data = request.get_json()
+    word = data['word']
+    translation = data['translation']
+    response_text = f"System will check if {translation} is correct translation for {word}"
+    return jsonify({'response': response_text})
+
+
 if __name__ == '__main__':
     app.run(debug=True)

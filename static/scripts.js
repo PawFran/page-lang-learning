@@ -61,3 +61,27 @@ function finishSession() {
         output.textContent += "Failed to process command.\n";
     });
 }
+
+function sendUserResponseServer() {
+    var consoleInput = document.getElementById('consoleInput')
+
+    var output = document.getElementById('consoleOutput');
+
+    fetch('/translation', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ translation: consoleInput.value, word: "example (to be implemented)" })
+
+    })
+    .then(response => response.json())
+    .then(data => {
+        output.textContent += "\n" + data.response + "\n\n";
+        output.scrollTop = output.scrollHeight; // Scroll to the bottom
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        output.textContent += "Failed to process command.\n";
+    });
+}
