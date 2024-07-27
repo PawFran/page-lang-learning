@@ -13,8 +13,9 @@ function startSession() {
 
 //    var consoleType = '1';  // Set this according to your UI, '1' for Translation as example
 
-    document.getElementById('finishButton').disabled = false;
     document.getElementById('startButton').disabled = true;
+    document.getElementById('finishButton').disabled = false;
+    document.getElementById('consoleInput').disabled = false;
 
     // Display the command in the console output
     output.textContent += "> Starting session with Start word: " + startValue + " and End word: " + endValue + "\n";
@@ -39,8 +40,9 @@ function startSession() {
 }
 
 function finishSession() {
-    document.getElementById('finishButton').disabled = true;
     document.getElementById('startButton').disabled = false;
+    document.getElementById('finishButton').disabled = true;
+    document.getElementById('consoleInput').disabled = true;
 
     var output = document.getElementById('consoleOutput');
 
@@ -65,6 +67,10 @@ function finishSession() {
 function sendUserResponseServer() {
     var consoleInput = document.getElementById('consoleInput')
 
+    var consoleValue = consoleInput.value
+
+    consoleInput.value = ''
+
     var output = document.getElementById('consoleOutput');
 
     fetch('/translation', {
@@ -72,7 +78,7 @@ function sendUserResponseServer() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ translation: consoleInput.value, word: "example (to be implemented)" })
+        body: JSON.stringify({ translation: consoleValue, word: "example (to be implemented)" })
 
     })
     .then(response => response.json())
