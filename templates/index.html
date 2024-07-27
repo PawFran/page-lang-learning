@@ -11,25 +11,39 @@
     <div class="header">
         <h1>Lang learning</h1>
     </div>
-    <div class="translation-container">
-        <div class="control-panel">
-            <label for="startWord">Start word</label>
-            <input type="text" id="startWord" placeholder="Enter start word">
 
-            <label for="endWord">End word</label>
-            <input type="text" id="endWord" placeholder="Enter end word">
+    <div class="tabs">
+        <button class="tablink" onclick="openTab(event, 'Translation')">Translation</button>
+        <button class="tablink" onclick="openTab(event, 'Scraping')">Scraping</button>
+    </div>
 
-            <button id="startButton" onclick="startSession()">START</button>
-            <button id="finishButton" onclick="finishSession()" disabled>Finish</button>
+    <div id="Translation" class="tabcontent">
+        <div class="translation-container">
+            <div class="control-panel">
+                <label for="startWord">Start word</label>
+                <input type="text" id="startWord" placeholder="Enter start word">
 
-        </div>
-        <div class="text-input">
-            <label for="console">Translation Console</label>
-            <div id="console" class="console">
-                <div id="consoleOutput" class="console-output"></div>
-                <input type="text" id="consoleInput" placeholder="Enter command" onkeydown="if (event.keyCode == 13) sendUserResponseServer();" disabled>
+                <label for="endWord">End word</label>
+                <input type="text" id="endWord" placeholder="Enter end word">
+
+                <button id="startButton" onclick="startSession()">START</button>
+                <button id="finishButton" onclick="finishSession()" disabled>Finish</button>
+
+            </div>
+            <div class="text-input">
+                <label for="console">Translation Console</label>
+                <div id="console" class="console">
+                    <div id="consoleOutput" class="console-output"></div>
+                    <input type="text" id="consoleInput" placeholder="Enter command" onkeydown="if (event.keyCode == 13) sendUserResponseServer();" disabled>
+                </div>
             </div>
         </div>
     </div>
+
+    <div id="Scraping" class="tabcontent">
+        <!-- Content for Scraping tab will go here -->
+    </div>
+
+
 </body>
 </html>

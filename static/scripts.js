@@ -92,3 +92,22 @@ function sendUserResponseServer() {
         output.textContent += "Failed to process command.\n";
     });
 }
+
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Add to handle default open tab or open specific tab on load
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector('.tablink').click(); // Clicks the first tablink to open
+});
