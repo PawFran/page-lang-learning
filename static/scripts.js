@@ -1,47 +1,48 @@
-document.getElementById('startBtn').addEventListener('click', function() {
+function startSession() {
     var startWord = document.getElementById('startWord').value;
     var endWord = document.getElementById('endWord').value;
-    var consoleArea = document.getElementById('consoleArea');
 
-    // Toggle console visibility
-    consoleArea.style.display = consoleArea.style.display === 'none' ? 'block' : 'none';
+    var output = document.getElementById('consoleOutput');
 
-    // Send the start and end words to the server
+//    var consoleType = '1';  // Set this according to your UI, '1' for Translation as example
+
+    document.getElementById('finishButton').disabled = false;
+    document.getElementById('startButton').disabled = true;
+
+    // Display the command in the console output
+    output.textContent += "> Starting session with Start word: " + startWord + " and End word: " + endWord + "\n";
+
+    // Send the data to the Flask server
     fetch('/start', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ startWord: startWord, endWord: endWord })
+        body: JSON.stringify({ start: startWord, end: endWord })
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Success:', data);
-        // Optionally handle the response from the server
+        output.textContent += data.response + "\n";
+        output.scrollTop = output.scrollHeight; // Scroll to the bottom
     })
-    .catch((error) => {
+    .catch(error => {
         console.error('Error:', error);
+        output.textContent += "Failed to process command.\n";
     });
-});
+}
 
-function sendToServer() {
-    var input = document.getElementById('consoleInput');
+function finishSession() {
+    document.getElementById('finishButton').disabled = true;
+    document.getElementById('startButton').disabled = false;
+
     var output = document.getElementById('consoleOutput');
-    var command = input.value;
-    var consoleType = '1';  // Set this according to your UI, '1' for Translation as example
 
-    input.value = ''; // Clear input after grabbing value
-
-    // Display the command in the console output
-    output.textContent += "> " + command + "\n";
-
-    // Send the data to the Flask server
-    fetch('/process', {
+    fetch('/finish', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text: command, type: consoleType })
+        body: JSON.stringify({ })
     })
     .then(response => response.json())
     .then(data => {

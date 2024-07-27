@@ -93,3 +93,13 @@ body {
 .console input[type="text"]:focus {
     outline: none;
 }
+
+#finishButton {
+    margin-top: 20px; /* Adds 20 pixels of space above the FINISH button */
+}
+
+button:disabled {
+    background-color: #cccccc; /* Grey background for disabled state */
+    color: #666666; /* Dim text color for disabled state */
+    cursor: not-allowed; /* Cursor to indicate the button is not clickable */
+}

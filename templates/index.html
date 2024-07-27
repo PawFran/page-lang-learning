@@ -19,7 +19,9 @@
             <label for="endWord">End word</label>
             <input type="text" id="endWord" placeholder="Enter end word">
 
-            <button onclick="startTranslation()">START</button>
+            <button id="startButton" onclick="startSession()">START</button>
+            <button id="finishButton" onclick="finishSession()" disabled>Finish</button>
+
         </div>
         <div class="text-input">
             <label for="console">Translation Console</label>
@@ -27,7 +29,7 @@
                 <div id="consoleOutput" class="console-output"></div>
                 <input type="text" id="consoleInput" placeholder="Enter command" onkeydown="if (event.keyCode == 13) sendToServer();">
             </div>
-        </div>        
+        </div>
     </div>
 </body>
 </html>
