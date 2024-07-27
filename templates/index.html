@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Language Learning - Translation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>Lang learning</h1>
+    </div>
+    <div class="translation-container">
+        <div class="control-panel">
+            <label for="startWord">Start word</label>
+            <input type="text" id="startWord" placeholder="Enter start word">
+
+            <label for="endWord">End word</label>
+            <input type="text" id="endWord" placeholder="Enter end word">
+
+            <button onclick="startTranslation()">START</button>
+        </div>
+        <div class="text-input">
+            <label for="console">Translation Console</label>
+            <div id="console" class="console">
+                <div id="consoleOutput" class="console-output"></div>
+                <input type="text" id="consoleInput" placeholder="Enter command" onkeydown="if (event.keyCode == 13) sendToServer();">
+            </div>
+        </div>        
+    </div>
+</body>
+</html>
