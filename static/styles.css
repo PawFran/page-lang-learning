@@ -73,7 +73,7 @@ body {
 }
 
 .console-output {
-    height: 150px;
+    height: 500px;
     overflow-y: auto;
     font-family: 'Courier New', monospace;
     padding: 5px;
