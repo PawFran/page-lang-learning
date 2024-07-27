@@ -1,8 +1,15 @@
 function startSession() {
-    var startWord = document.getElementById('startWord').value;
-    var endWord = document.getElementById('endWord').value;
+    var startWord = document.getElementById('startWord');
+    var endWord = document.getElementById('endWord');
 
     var output = document.getElementById('consoleOutput');
+
+    var startValue = startWord.value
+    var endValue = endWord.value
+
+    // clear input fields
+//    startWord.value = '';
+//    endWord.value = '';
 
 //    var consoleType = '1';  // Set this according to your UI, '1' for Translation as example
 
@@ -10,7 +17,7 @@ function startSession() {
     document.getElementById('startButton').disabled = true;
 
     // Display the command in the console output
-    output.textContent += "> Starting session with Start word: " + startWord + " and End word: " + endWord + "\n";
+    output.textContent += "> Starting session with Start word: " + startValue + " and End word: " + endValue + "\n";
 
     // Send the data to the Flask server
     fetch('/start', {
@@ -46,7 +53,7 @@ function finishSession() {
     })
     .then(response => response.json())
     .then(data => {
-        output.textContent += data.response + "\n";
+        output.textContent += "\n" + data.response + "\n\n";
         output.scrollTop = output.scrollHeight; // Scroll to the bottom
     })
     .catch(error => {
