@@ -43,6 +43,7 @@ function finishSession() {
     document.getElementById('startButton').disabled = false;
     document.getElementById('finishButton').disabled = true;
     document.getElementById('consoleInput').disabled = true;
+    document.getElementById('consoleInput').value = ''
 
     var output = document.getElementById('consoleOutput');
 
