@@ -7,6 +7,7 @@ function startTranslation() {
     document.getElementById('startTranslation').disabled = true;
     document.getElementById('finishTranslation').disabled = false;
     document.getElementById('consoleInputTranslation').disabled = false;
+    document.getElementById('consoleInputTranslation').focus()
 
     // Display the command in the console output
     output.textContent += "> Starting session with Start word: " + startWord.value + " and End word: " + endWord.value + "\n";
