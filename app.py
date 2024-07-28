@@ -41,8 +41,6 @@ def start_declension_session():
     declensions = data['declensions']
     print("Received declensions:", declensions)  # Log the declensions to the console
 
-    # You can process the declensions here as needed
-
     # Send back a confirmation response
     return jsonify({'status': 'success', 'received': declensions})
 
@@ -55,6 +53,33 @@ def finish_declension_session():
 
 @app.route('/declension_answer', methods=['POST'])
 def check_declension_answer():
+    data = request.get_json()
+    word = data['word']
+    answer = data['answer']
+    response_text = f"System will check if {answer} is correct"
+    return jsonify({'response': response_text})
+
+
+@app.route('/start_conjugation_session', methods=['POST'])
+def start_conjugation_session():
+    data = request.get_json()  # Get the JSON data sent by the client
+    conjugations = data['conjugations']
+    moods = data['moods']
+    voices = data['voices']
+    tenses = data['tenses']
+
+    # Send back a confirmation response
+    return jsonify({'status': 'success', 'received': conjugations})
+
+
+@app.route('/finish_conjugation_session', methods=['POST'])
+def finish_conjugation_session():
+    response_text = f"Session finished"
+    return jsonify({'response': response_text})
+
+
+@app.route('/conjugation_answer', methods=['POST'])
+def check_conjugation_answer():
     data = request.get_json()
     word = data['word']
     answer = data['answer']

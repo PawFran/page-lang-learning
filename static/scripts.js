@@ -104,9 +104,10 @@ function sendTranslation() {
     });
 }
 
-function getCheckedDeclensions() {
-    const checkboxes = document.querySelectorAll('#Declension .control-panel input[type="checkbox"]');
-    let checkedValues = [];
+function getChecked(id) {
+    const selector = '#' + id + ' input[type="checkbox"]'
+    const checkboxes = document.querySelectorAll(selector)
+    let checkedValues = []
 
     checkboxes.forEach((checkbox) => {
         if (checkbox.checked) {
@@ -114,7 +115,6 @@ function getCheckedDeclensions() {
         }
     });
 
-//    console.log("Checked declensions:", checkedValues);
     return checkedValues;
 }
 
@@ -125,7 +125,7 @@ function startDeclensionSession() {
     document.getElementById('consoleInputDeclension').disabled = false
     document.getElementById('consoleInputDeclension').focus()
 
-    let checkedValues = getCheckedDeclensions()
+    let checkedValues = getChecked('declension-section')
 
     let output = document.getElementById('consoleOutputDeclension')
     output.textContent += "> Starting session with declensions: " + checkedValues + "\n"
@@ -198,6 +198,98 @@ function sendDeclensionAnswer() {
     .then(response => response.json())
     .then(data => {
         output.textContent += "\n" + data.response + "\n\n";
+        output.scrollTop = output.scrollHeight; // Scroll to the bottom
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        output.textContent += "Failed to process command.\n";
+    });
+}
+
+function startConjugationSession() {
+    document.getElementById('startConjugation').disabled = true
+    document.getElementById('finishConjugation').disabled = false
+
+    document.getElementById('consoleInputConjugation').disabled = false
+    document.getElementById('consoleInputConjugation').focus()
+
+    let checkedTypes = getChecked("type-section")
+    let checkedMoods = getChecked("mood-section")
+    let checkedVoices = getChecked("voice-section")
+    let checkedTenses = getChecked("tense-section")
+
+    let output = document.getElementById('consoleOutputConjugation')
+    output.textContent += "> Starting session with conjugations: " + checkedTypes + " moods: " + checkedMoods + " voices: " + checkedVoices + " tenses: " + checkedTenses + " " + "\n"
+
+    fetch('/start_conjugation_session', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            conjugations: checkedTypes,
+            moods: checkedMoods,
+            voices: checkedVoices,
+            tenses: checkedTenses
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        // Handle response data here
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+
+}
+
+function finishConjugationSession() {
+    document.getElementById('startConjugation').disabled = false
+    document.getElementById('finishConjugation').disabled = true
+    document.getElementById('consoleInputConjugation').disabled = true
+    document.getElementById('consoleInputConjugation').value = ''
+
+    var output = document.getElementById('consoleOutputConjugation');
+
+    fetch('/finish_conjugation_session', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ })
+    })
+    .then(response => response.json())
+    .then(data => {
+        output.textContent += "\n" + data.response + "\n\n";
+        output.scrollTop = output.scrollHeight; // Scroll to the bottom
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        output.textContent += "Failed to process command.\n";
+    });
+}
+
+function sendConjugationAnswer() {
+    let consoleInput = document.getElementById('consoleInputConjugation')
+
+    let consoleValue = consoleInput.value
+
+    consoleInput.value = ''
+
+    let output = document.getElementById('consoleOutputConjugation');
+
+    fetch('/conjugation_answer', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ answer: consoleValue, word: "example (to be implemented)" })
+
+    })
+    .then(response => response.json())
+    .then(data => {
+        output.textContent += "\n" + data.response + "\n";
         output.scrollTop = output.scrollHeight; // Scroll to the bottom
     })
     .catch(error => {

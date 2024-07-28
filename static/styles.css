@@ -163,3 +163,42 @@ button:disabled {
     height: 300px; /* Adjust to match your design needs */
     overflow-y: auto;
 }
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.control-panel {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h3 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.section label {
+    display: block; /* Make labels block to align checkboxes vertically */
+    margin: 5px 0;
+}
+
+.console-input {
+    width: 65%;
+    padding: 20px;
+}
+
+.console-output {
+    height: 300px; /* Adjust based on your needs */
+    overflow-y: auto;
+}
