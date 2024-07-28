@@ -1,27 +1,18 @@
-function startSession() {
+function startTranslation() {
     var startWord = document.getElementById('startWord');
     var endWord = document.getElementById('endWord');
 
     var output = document.getElementById('consoleOutput');
 
-    var startValue = startWord.value
-    var endValue = endWord.value
-
-    // clear input fields
-//    startWord.value = '';
-//    endWord.value = '';
-
-//    var consoleType = '1';  // Set this according to your UI, '1' for Translation as example
-
-    document.getElementById('startButton').disabled = true;
-    document.getElementById('finishButton').disabled = false;
+    document.getElementById('startTranslation').disabled = true;
+    document.getElementById('finishTranslation').disabled = false;
     document.getElementById('consoleInput').disabled = false;
 
     // Display the command in the console output
-    output.textContent += "> Starting session with Start word: " + startValue + " and End word: " + endValue + "\n";
+    output.textContent += "> Starting session with Start word: " + startWord.value + " and End word: " + endWord.value + "\n";
 
     // Send the data to the Flask server
-    fetch('/start', {
+    fetch('/translate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -39,9 +30,9 @@ function startSession() {
     });
 }
 
-function finishSession() {
-    document.getElementById('startButton').disabled = false;
-    document.getElementById('finishButton').disabled = true;
+function finishTranslation() {
+    document.getElementById('startTranslation').disabled = false;
+    document.getElementById('finishTranslation').disabled = true;
     document.getElementById('consoleInput').disabled = true;
     document.getElementById('consoleInput').value = ''
 
@@ -111,3 +102,9 @@ function openTab(evt, tabName) {
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.tablink').click(); // Clicks the first tablink to open
 });
+
+function activateConsole(tab) {
+    if (tab === 'Declension') {
+        $('#consoleInputDeclension').removeAttr('disabled').focus();
+    }
+}

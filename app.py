@@ -10,8 +10,8 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/start', methods=['POST'])
-def start_session():
+@app.route('/translate', methods=['POST'])
+def translate():
     data = request.get_json()
     start = data['start']
     end = data['end']

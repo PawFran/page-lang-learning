@@ -28,8 +28,8 @@
                 <label for="endWord">End word</label>
                 <input type="text" id="endWord" placeholder="Enter end word">
 
-                <button id="startButton" onclick="startSession()">START</button>
-                <button id="finishButton" onclick="finishSession()" disabled>Finish</button>
+                <button id="startTranslation" onclick="startTranslation()">Start</button>
+                <button id="finishTranslation" onclick="finishTranslation()" disabled>Finish</button>
 
             </div>
             <div class="text-input">
@@ -42,18 +42,36 @@
         </div>
     </div>
 
-    <div id="Scraping" class="tabcontent">
-        <!-- Content for Scraping tab will go here -->
+    <div id="Declension" class="tabcontent">
+        <div class="declension-container">
+            <div class="control-panel">
+                <label><input type="checkbox" value="I"> I</label>
+                <label><input type="checkbox" value="II"> II</label>
+                <label><input type="checkbox" value="IIIv"> III vowel</label>
+                <label><input type="checkbox" value="IIIc"> III consonant</label>
+                <label><input type="checkbox" value="IIIm"> III mixed</label>
+                <label><input type="checkbox" value="IV"> IV</label>
+                <label><input type="checkbox" value="V"> V</label>
+
+                <button id="startDeclension" onclick="activateConsole('Declension')">Start</button>
+                <button id="finishDeclension" onclick="activateConsole('Declension')">Finish</button>
+            </div>
+            <div class="console-input">
+                <div id="consoleDeclension" class="console">
+                    <div id="consoleOutputDeclension" class="console-output"></div>
+                    <input type="text" id="consoleInputDeclension" placeholder="Enter text..." disabled>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="Conjugation" class="tabcontent">
         <!-- Content for Scraping tab will go here -->
     </div>
 
-    <div id="Declension" class="tabcontent">
+    <div id="Scraping" class="tabcontent">
         <!-- Content for Scraping tab will go here -->
     </div>
-
 
 </body>
 </html>

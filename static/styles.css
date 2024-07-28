@@ -129,3 +129,37 @@ button:disabled {
 .tablink.active {
     background-color: #777;
 }
+
+.declension-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.control-panel {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.control-panel label {
+    margin-bottom: 10px; /* More space between checkboxes */
+}
+
+.control-panel button {
+    padding: 10px 20px;
+    margin-top: 10px; /* Space above the button */
+}
+
+.console-input {
+    width: 65%;
+    padding: 20px;
+}
+
+.console-output {
+    height: 300px; /* Adjust to match your design needs */
+    overflow-y: auto;
+}
