@@ -1,4 +1,4 @@
-function startTranslation() {
+function startTranslationSession() {
     var startWord = document.getElementById('startWord');
     var endWord = document.getElementById('endWord');
 
@@ -31,7 +31,7 @@ function startTranslation() {
     });
 }
 
-function finishTranslation() {
+function finishTranslationSession() {
     document.getElementById('startTranslation').disabled = false;
     document.getElementById('finishTranslation').disabled = true;
     document.getElementById('consoleInputTranslation').disabled = true;
