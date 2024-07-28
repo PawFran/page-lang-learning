@@ -114,7 +114,18 @@
     </div>
 
     <div id="Scraping" class="tabcontent">
-        <!-- Content for Scraping tab will go here -->
+        <div class="flex-container">
+            <div class="control-panel">
+                <label for="wordsInput">Words:</label>
+                <input type="text" id="wordsInput" placeholder="Enter words to scrape">
+                <button id="startScrape" onclick="startScraping()">Start</button>
+                <button id="interruptScrape" onclick="interruptScraping()" disabled>Interrupt</button>
+            </div>
+            <div class="output-panel">
+                <label for="scrapeOutput">Results:</label>
+                <textarea id="scrapeOutput" placeholder="Results will appear here..." readonly></textarea>
+            </div>
+        </div>
     </div>
 
 </body>

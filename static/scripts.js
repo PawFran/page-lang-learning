@@ -297,3 +297,26 @@ function sendConjugationAnswer() {
         output.textContent += "Failed to process command.\n";
     });
 }
+
+function startScraping() {
+    var words = document.getElementById('wordsInput').value
+    var output = document.getElementById('scrapeOutput')
+
+    fetch('/scrape', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ words: words })
+
+    })
+    .then(response => response.json())
+    .then(data => {
+        output.value = data.response + "\n"
+        output.scrollTop = output.scrollHeight // Scroll to the bottom
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        output.textContent += "Failed to process command.\n"
+    });
+}

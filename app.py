@@ -87,5 +87,14 @@ def check_conjugation_answer():
     return jsonify({'response': response_text})
 
 
+@app.route('/scrape', methods=['POST'])
+def scrape():
+    data = request.get_json()
+    words = data['words']
+    response_text = f"Following words will be scraped: {words}"
+    print(response_text)
+    return jsonify({'response': response_text})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
