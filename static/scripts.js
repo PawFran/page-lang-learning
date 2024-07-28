@@ -12,7 +12,7 @@ function startTranslation() {
     output.textContent += "> Starting session with Start word: " + startWord.value + " and End word: " + endWord.value + "\n";
 
     // Send the data to the Flask server
-    fetch('/translate', {
+    fetch('/start_translation_session', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ function finishTranslation() {
 
     var output = document.getElementById('consoleOutputTranslation');
 
-    fetch('/finish', {
+    fetch('/finish_translation_session', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
