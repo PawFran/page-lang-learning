@@ -14,9 +14,9 @@
 
     <div class="tabs">
         <button class="tablink" onclick="openTab(event, 'Translation')">Translation</button>
-        <button class="tablink" onclick="openTab(event, 'Scraping')">Scraping</button>
-        <button class="tablink" onclick="openTab(event, 'Conjugation')">Conjugation</button>
         <button class="tablink" onclick="openTab(event, 'Declension')">Declension</button>
+        <button class="tablink" onclick="openTab(event, 'Conjugation')">Conjugation</button>
+        <button class="tablink" onclick="openTab(event, 'Scraping')">Scraping</button>
     </div>
 
     <div id="Translation" class="tabcontent">
@@ -36,7 +36,7 @@
                 <label for="console">Translation Console</label>
                 <div id="console" class="console">
                     <div id="consoleOutput" class="console-output"></div>
-                    <input type="text" id="consoleInput" placeholder="Enter command" onkeydown="if (event.keyCode == 13) sendUserResponseServer();" disabled>
+                    <input type="text" id="consoleInputTranslation" placeholder="Enter command" onkeydown="if (event.keyCode == 13) sendUserResponseServer();" disabled>
                 </div>
             </div>
         </div>

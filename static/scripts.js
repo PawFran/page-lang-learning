@@ -6,7 +6,7 @@ function startTranslation() {
 
     document.getElementById('startTranslation').disabled = true;
     document.getElementById('finishTranslation').disabled = false;
-    document.getElementById('consoleInput').disabled = false;
+    document.getElementById('consoleInputTranslation').disabled = false;
 
     // Display the command in the console output
     output.textContent += "> Starting session with Start word: " + startWord.value + " and End word: " + endWord.value + "\n";
@@ -33,8 +33,8 @@ function startTranslation() {
 function finishTranslation() {
     document.getElementById('startTranslation').disabled = false;
     document.getElementById('finishTranslation').disabled = true;
-    document.getElementById('consoleInput').disabled = true;
-    document.getElementById('consoleInput').value = ''
+    document.getElementById('consoleInputTranslation').disabled = true;
+    document.getElementById('consoleInputTranslation').value = ''
 
     var output = document.getElementById('consoleOutput');
 
@@ -57,7 +57,7 @@ function finishTranslation() {
 }
 
 function sendUserResponseServer() {
-    var consoleInput = document.getElementById('consoleInput')
+    var consoleInput = document.getElementById('consoleInputTranslation')
 
     var consoleValue = consoleInput.value
 
