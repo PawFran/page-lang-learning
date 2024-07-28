@@ -56,7 +56,7 @@ function finishTranslation() {
     });
 }
 
-function sendUserResponseServer() {
+function sendTranslation() {
     var consoleInput = document.getElementById('consoleInputTranslation')
 
     var consoleValue = consoleInput.value

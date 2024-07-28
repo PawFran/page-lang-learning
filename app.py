@@ -17,7 +17,6 @@ def translate():
     end = data['end']
     response_text = f"Lorem ipsum"
     print(response_text)
-    # console_type = data['type']  # '1', '2', or '3' corresponding to Translation, Verb, Noun
     return jsonify({'response': response_text})
 
 
