@@ -53,13 +53,13 @@
                 <label><input type="checkbox" value="IV"> IV</label>
                 <label><input type="checkbox" value="V"> V</label>
 
-                <button id="startDeclension" onclick="activateConsole('Declension')">Start</button>
-                <button id="finishDeclension" onclick="activateConsole('Declension')" disabled>Finish</button>
+                <button id="startDeclension" onclick="startDeclensionSession()">Start</button>
+                <button id="finishDeclension" onclick="finishDeclensionSession()" disabled>Finish</button>
             </div>
             <div class="console-input">
                 <div id="consoleDeclension" class="console">
                     <div id="consoleOutputDeclension" class="console-output"></div>
-                    <input type="text" id="consoleInputDeclension" placeholder="Enter text..." disabled>
+                    <input type="text" id="consoleInputDeclension" placeholder="Enter text..." onkeydown="if (event.keyCode == 13) sendDeclensionAnswer();" disabled>
                 </div>
             </div>
         </div>

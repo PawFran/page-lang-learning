@@ -35,5 +35,32 @@ def check_translation():
     return jsonify({'response': response_text})
 
 
+@app.route('/start_declension_session', methods=['POST'])
+def start_declension_session():
+    data = request.get_json()  # Get the JSON data sent by the client
+    declensions = data['declensions']
+    print("Received declensions:", declensions)  # Log the declensions to the console
+
+    # You can process the declensions here as needed
+
+    # Send back a confirmation response
+    return jsonify({'status': 'success', 'received': declensions})
+
+
+@app.route('/finish_declension_session', methods=['POST'])
+def finish_declension_session():
+    response_text = f"Session finished"
+    return jsonify({'response': response_text})
+
+
+@app.route('/declension_answer', methods=['POST'])
+def check_declension_answer():
+    data = request.get_json()
+    word = data['word']
+    answer = data['answer']
+    response_text = f"System will check if {answer} is correct"
+    return jsonify({'response': response_text})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
