@@ -11,7 +11,7 @@ def home():
 
 
 @app.route('/start_translation_session', methods=['POST'])
-def translate():
+def start_translation_session():
     data = request.get_json()
     start = data['start']
     end = data['end']
@@ -21,7 +21,7 @@ def translate():
 
 
 @app.route('/finish_translation_session', methods=['POST'])
-def finish_session():
+def finish_translation_session():
     response_text = f"Session finished"
     return jsonify({'response': response_text})
 
