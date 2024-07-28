@@ -302,6 +302,9 @@ function startScraping() {
     var words = document.getElementById('wordsInput').value
     var output = document.getElementById('scrapeOutput')
 
+    document.getElementById('startScrape').disabled = true
+    document.getElementById('interruptScrape').disabled = false
+
     fetch('/scrape', {
         method: 'POST',
         headers: {
@@ -319,4 +322,7 @@ function startScraping() {
         console.error('Error:', error);
         output.textContent += "Failed to process command.\n"
     });
+
+    document.getElementById('startScrape').disabled = false
+    document.getElementById('interruptScrape').disabled = true
 }
