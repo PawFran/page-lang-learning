@@ -2,7 +2,7 @@ function startTranslation() {
     var startWord = document.getElementById('startWord');
     var endWord = document.getElementById('endWord');
 
-    var output = document.getElementById('consoleOutput');
+    var output = document.getElementById('consoleOutputTranslation');
 
     document.getElementById('startTranslation').disabled = true;
     document.getElementById('finishTranslation').disabled = false;
@@ -36,7 +36,7 @@ function finishTranslation() {
     document.getElementById('consoleInputTranslation').disabled = true;
     document.getElementById('consoleInputTranslation').value = ''
 
-    var output = document.getElementById('consoleOutput');
+    var output = document.getElementById('consoleOutputTranslation');
 
     fetch('/finish', {
         method: 'POST',
@@ -63,7 +63,7 @@ function sendUserResponseServer() {
 
     consoleInput.value = ''
 
-    var output = document.getElementById('consoleOutput');
+    var output = document.getElementById('consoleOutputTranslation');
 
     fetch('/translation', {
         method: 'POST',
